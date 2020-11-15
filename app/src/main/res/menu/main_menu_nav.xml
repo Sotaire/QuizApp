@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/quiz_icon"
+        android:icon="@drawable/ic_puzzle_piece"
+        android:title="quiz"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/history_icon"
+        android:icon="@drawable/ic_history"
+        android:title="history"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/settings_icon"
+        android:icon="@drawable/ic_settings"
+        android:title="settings"
+        app:showAsAction="always"/>
+
+</menu>

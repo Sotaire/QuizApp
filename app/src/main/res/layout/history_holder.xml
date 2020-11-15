@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="110dp">
+
+    <TextView
+        android:id="@+id/h_category_tv"
+        android:layout_width="281dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Category: Mixed"
+        android:textColor="@android:color/black"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/h_dots_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_dots"
+        app:layout_constraintBottom_toBottomOf="@id/h_category_tv"
+        app:layout_constraintLeft_toRightOf="@id/h_category_tv"
+        app:layout_constraintTop_toTopOf="@id/h_category_tv" />
+
+    <TextView
+        android:id="@+id/h_correct_answers_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="13dp"
+        android:text="Correct answers: 8/10"
+        android:textColor="@color/correctA"
+        android:textSize="12sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/h_category_tv" />
+
+    <TextView
+        android:id="@+id/h_difficulty_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="9dp"
+        android:text="Difficulty: Easy"
+        android:textColor="@color/correctA"
+        android:textSize="12sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/h_correct_answers_tv" />
+
+    <TextView
+        android:id="@+id/h_date_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:layout_marginRight="18dp"
+        android:text="12 may 2019 20:32"
+        android:textColor="@color/correctA"
+        android:textSize="9sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

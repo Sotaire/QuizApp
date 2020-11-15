@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import
+            alias="v"
+            type="android.view.View" />
+
+        <variable
+            name="question"
+            type="com.tilek.data.models.Question" />
+
+        <variable
+            name="listener"
+            type="com.tilek.adapters.quizA.OnBtnClickListener" />
+
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/question_tv"
+            android:layout_width="213dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:text="@{question.question}"
+            android:textAlignment="center"
+            android:textColor="@color/questionTextColor"
+            android:textSize="20dp" />
+
+        <LinearLayout
+            android:id="@+id/question_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="@{question.type.equals(`multiple`) ? v.VISIBLE : v.GONE}">
+
+            <Button
+                android:id="@+id/btn_one"
+                android:layout_width="280dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="43dp"
+                android:background="@drawable/question_btn_back"
+                android:textAlignment="center"
+                android:textColor="#6979F8" />
+
+            <Button
+                android:id="@+id/btn_two"
+                android:layout_width="280dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/question_btn_back"
+                android:textAlignment="center"
+                android:textColor="#6979F8" />
+
+            <Button
+                android:id="@+id/btn_three"
+                android:layout_width="280dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/question_btn_back"
+                android:textAlignment="center"
+                android:textColor="#6979F8" />
+
+            <Button
+                android:id="@+id/btn_four"
+                android:layout_width="280dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/question_btn_back"
+                android:textAlignment="center"
+                android:textColor="#6979F8" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/question_container_boolean"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:visibility="@{question.type.equals(`multiple`) ? v.GONE : v.VISIBLE}">
+
+            <Button
+                android:id="@+id/btn_yes_boolean"
+                android:layout_width="280dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="43dp"
+                android:background="@drawable/question_btn_back"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="#6979F8" />
+
+            <Button
+                android:id="@+id/btn_no_boolean"
+                android:layout_width="280dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="34dp"
+                android:background="@drawable/question_btn_back"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="#6979F8" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+</layout>

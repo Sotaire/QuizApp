@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">QuizApp</string>
+
+    <string-array name="spinner1">
+        <item>General Knowledge</item>
+    </string-array>
+
+    <string-array name="spinner2">
+        <item>Easy</item>
+        <item>Medium</item>
+        <item>Hard</item>
+    </string-array>
+</resources>
