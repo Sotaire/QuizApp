@@ -1,8 +1,12 @@
 package com.tilek.ui.question;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +18,7 @@ import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
+import com.google.gson.Gson;
 import com.tilek.R;
 import com.tilek.data.models.Question;
 import com.tilek.data.models.QuizResult;
@@ -34,10 +39,7 @@ public class QuestionActivity extends AppCompatActivity implements OnBtnClickLis
     int position;
     int clickedPosition;
 
-    public static final String RESULT_CATEGORY = "result_category";
-    public static final String RESULT_DIFFICULTY = "result_difficulty";
     public static final String CORRECT_ANSWERS = "correct_answers";
-    public static final String CREATED_AT = "created_at";
     public static final String QUESTIONS = "questions";
 
     @Override
@@ -77,13 +79,10 @@ public class QuestionActivity extends AppCompatActivity implements OnBtnClickLis
     }
 
     private void lastQuestion() {
-        questionViewModel.isLast.observe(this, quizResult -> {
+        questionViewModel.isLast.observe(this, correctA -> {
             Intent intent = new Intent(QuestionActivity.this,ResultActivity.class);
-            intent.putExtra(RESULT_CATEGORY,quizResult.getCategory());
-            intent.putExtra(RESULT_DIFFICULTY,quizResult.getDifficulty());
-            intent.putExtra(CORRECT_ANSWERS,quizResult.getCorrectAnswers());
-            intent.putExtra(CREATED_AT,quizResult.getCreatedAt());
-            intent.putExtra(QUESTIONS,quizResult.getSize());
+            intent.putExtra(CORRECT_ANSWERS,correctA);
+            intent.putExtra(QUESTIONS,new Gson().toJson(questionViewModel.mQuestion));
             startActivity(intent);
         });
     }
@@ -118,10 +117,41 @@ public class QuestionActivity extends AppCompatActivity implements OnBtnClickLis
 
     @Override
     public void onClick(int position, int answerPosition) {
-        binding.horizontalRecycler.scrollToPosition(position + 1);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                check(position,answerPosition);
+            }
+        },1000);
+
+        new Handler().postDelayed(() -> {
+            questionViewModel.onAnswerClick(position,answerPosition);
+            binding.horizontalRecycler.scrollToPosition(position + 1);
+        },2000);
+
         clickedPosition = position;
-        questionViewModel.onAnswerClick(position,answerPosition);
-        questionViewModel.moveToQuestionFinish(position,System.currentTimeMillis());
+        questionViewModel.moveToQuestionFinish(position);
+    }
+
+    public void check (int position, int answerPosition){
+        ArrayList<Button> views = new ArrayList<>();
+        views.add(quizAdapter.getHolder1().questionHolderBinding.btnOne);
+        views.add(quizAdapter.getHolder1().questionHolderBinding.btnTwo);
+        views.add(quizAdapter.getHolder1().questionHolderBinding.btnThree);
+        views.add(quizAdapter.getHolder1().questionHolderBinding.btnFour);
+        views.add(quizAdapter.getHolder1().questionHolderBinding.btnNoBoolean);
+        views.add(quizAdapter.getHolder1().questionHolderBinding.btnYesBoolean);
+        for (int i = 0; i < views.size() ; i++) {
+            if (views.get(i).getText().toString().equals(questionViewModel.mQuestion.get(position).getCorrectAnswer())){
+                views.get(i).setBackgroundResource(R.drawable.question_right_back);
+                views.get(i).setTextColor(Color.WHITE);
+            }else{
+                views.get(i).setBackgroundResource(R.drawable.question_wrong);
+                views.get(i).setTextColor(Color.WHITE);
+            }
+        }
+        quizAdapter.setBtns(views);
     }
 
     @Override

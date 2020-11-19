@@ -7,4 +7,7 @@
     <color name="textColor2">#3F3356</color>
     <color name="questionTextColor">#1A051D</color>
     <color name="correctA">#801F2041</color>
+    <color name="correctAnswer">#4CE2A7</color>
+    <color name="wrongAnswer">#FF4D4D</color>
+    <color name="clicked">#6979F8</color>
 </resources>

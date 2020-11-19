@@ -44,9 +44,10 @@
             <Button
                 android:id="@+id/btn_one"
                 android:layout_width="280dp"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="43dp"
+                android:clickable="@{question.clicked ? false : true}"
                 android:background="@drawable/question_btn_back"
                 android:textAlignment="center"
                 android:textColor="#6979F8" />
@@ -54,9 +55,10 @@
             <Button
                 android:id="@+id/btn_two"
                 android:layout_width="280dp"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="6dp"
+                android:clickable="@{question.clicked ? false : true}"
                 android:background="@drawable/question_btn_back"
                 android:textAlignment="center"
                 android:textColor="#6979F8" />
@@ -64,9 +66,10 @@
             <Button
                 android:id="@+id/btn_three"
                 android:layout_width="280dp"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"
+                android:clickable="@{question.clicked ? false : true}"
                 android:background="@drawable/question_btn_back"
                 android:textAlignment="center"
                 android:textColor="#6979F8" />
@@ -74,9 +77,10 @@
             <Button
                 android:id="@+id/btn_four"
                 android:layout_width="280dp"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"
+                android:clickable="@{question.clicked ? false : true}"
                 android:background="@drawable/question_btn_back"
                 android:textAlignment="center"
                 android:textColor="#6979F8" />
@@ -94,9 +98,10 @@
             <Button
                 android:id="@+id/btn_yes_boolean"
                 android:layout_width="280dp"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="43dp"
+                android:clickable="@{question.clicked ? false : true}"
                 android:background="@drawable/question_btn_back"
                 android:textAlignment="center"
                 android:textAllCaps="false"
@@ -105,9 +110,10 @@
             <Button
                 android:id="@+id/btn_no_boolean"
                 android:layout_width="280dp"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="34dp"
+                android:clickable="@{question.clicked ? false : true}"
                 android:background="@drawable/question_btn_back"
                 android:textAlignment="center"
                 android:textAllCaps="false"

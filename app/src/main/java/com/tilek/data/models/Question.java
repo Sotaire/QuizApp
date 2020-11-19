@@ -31,9 +31,19 @@ public class Question {
     @Expose
     private ArrayList<String> incorrectAnswers;
 
-    private int selectQuestionPosition;
+    private int selectQuestionPosition = -1;
 
     private boolean isClicked;
+
+    private boolean isTrue;
+
+    public boolean isTrue() {
+        return isTrue;
+    }
+
+    public void setTrue(boolean aTrue) {
+        isTrue = aTrue;
+    }
 
     public boolean isClicked() {
         return isClicked;

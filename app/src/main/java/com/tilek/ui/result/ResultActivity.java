@@ -8,17 +8,22 @@ import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 
 import com.tilek.R;
+import com.tilek.data.models.Question;
 import com.tilek.data.models.QuizResult;
 import com.tilek.databinding.ActivityResultBinding;
 import com.tilek.ui.question.QuestionActivity;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 public class ResultActivity extends AppCompatActivity {
 
     ResultViewModel resultViewModel;
     ActivityResultBinding binding;
+    QuizResult quizResult;
+    int correctAnswers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,18 +33,33 @@ public class ResultActivity extends AppCompatActivity {
 
         resultViewModel = new ViewModelProvider(this).get(ResultViewModel.class);
 
+        binding.setViewModel(resultViewModel);
+
+        correctAnswers = getIntent().getIntExtra(QuestionActivity.CORRECT_ANSWERS,0);
         resultViewModel.getData(getIntent());
 
-        resultViewModel.liveData.observe(this, new Observer<QuizResult>() {
+        resultViewModel.mutableLiveDataQuestions.observe(this, new Observer<ArrayList<Question>>() {
             @Override
-            public void onChanged(QuizResult quizResult) {
-                binding.setResult(quizResult);
+            public void onChanged(ArrayList<Question> questions) {
+                if (questions != null && questions.size()>0){
+                    quizResult = new QuizResult(questions.get(0).getCategory()
+                            ,questions.get(0).getDifficulty()
+                            ,correctAnswers
+                            ,new Date(System.currentTimeMillis())
+                            ,questions.size());
+                    resultViewModel.getPercent(questions.size(),correctAnswers);
+                    binding.setResult(quizResult);
+                }
             }
         });
+
     }
 
     void getDate(long time){
         String dateString = new SimpleDateFormat("MM/dd/yyyy").format(time);
     }
 
+    @Override
+    public void onBackPressed() {
+    }
 }

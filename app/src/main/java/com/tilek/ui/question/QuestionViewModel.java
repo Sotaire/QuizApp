@@ -22,7 +22,9 @@ public class QuestionViewModel extends ViewModel {
     ArrayList<String> categories = new ArrayList<>();
     public ArrayList<Question> mQuestion;
 
-    MutableLiveData<QuizResult> isLast = new MutableLiveData<>();
+    int correctAnswers;
+
+    MutableLiveData<Integer> isLast = new MutableLiveData<>();
 
     public ObservableField<Boolean> isLoading = new ObservableField<>();
 
@@ -49,22 +51,16 @@ public class QuestionViewModel extends ViewModel {
         },amount,id,difficulty);
     }
 
-    public void moveToQuestionFinish(int position,long createdAT){
+    public void moveToQuestionFinish(int position){
         if (position == mQuestion.size() - 1){
-            finish(position,createdAT);
+            finish();
         }else {
             currentQuestionPosition.setValue(position);
         }
     }
 
-    void finish(int position,long createdAt){
-        Question question = mQuestion.get(position);
-        QuizResult quizResult = new QuizResult(question.getCategory(),
-                                                question.getDifficulty(),
-                                                5,
-                                                new Date(createdAt),
-                                                mQuestion.size());
-        isLast.setValue(quizResult);
+    void finish(){
+        isLast.setValue(correctAnswers);
     }
 
     void skip(int questionPosition){
@@ -85,9 +81,18 @@ public class QuestionViewModel extends ViewModel {
 
         question.setSelectQuestionPosition(answerPosition);
 
+        question.setClicked(true);
+
+        if (question.getIncorrectAnswers().get(answerPosition).equals(question.getCorrectAnswer())) {
+            correctAnswers++;
+            question.setTrue(true);
+        }else{
+            question.setTrue(false);
+        }
+
         mQuestion.set(questionPosition,question);
 
-        mQuestion.get(questionPosition).setClicked(true);
+//        mQuestion.get(questionPosition).setClicked(true);
 
         questionLiveData.setValue(mQuestion);
     }
