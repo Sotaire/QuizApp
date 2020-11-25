@@ -1,13 +1,14 @@
-package com.tilek.ui.main.historyF;
+package com.tilek.data.local;
 
-import androidx.lifecycle.LiveData;
+import androidx.room.Room;
 
-import com.tilek.data.local.IHistoryStorage;
 import com.tilek.data.models.QuizResult;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class HistoryStorage implements IHistoryStorage {
+
+    QuizDao quizDao;
 
     @Override
     public QuizResult getQuizResult(int id) {
@@ -20,7 +21,7 @@ public class HistoryStorage implements IHistoryStorage {
     }
 
     @Override
-    public LiveData<ArrayList<QuizResult>> getAll() {
+    public List<QuizResult> getAll() {
         return null;
     }
 
@@ -33,5 +34,4 @@ public class HistoryStorage implements IHistoryStorage {
     public void deleteAll() {
 
     }
-
 }

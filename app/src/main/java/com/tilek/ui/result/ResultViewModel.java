@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.tilek.App;
 import com.tilek.data.models.Question;
 import com.tilek.data.models.QuizResult;
 import com.tilek.ui.question.QuestionActivity;
@@ -39,6 +40,10 @@ public class ResultViewModel extends ViewModel {
         percent = correctAnswers  * 100 / questionsAmount;
 
         percentField.set(percent + " %");
+    }
+
+    public void saveResultToDB(QuizResult quizResult){
+        App.quizDatabase.quizDao().insert(quizResult);
     }
 
 }

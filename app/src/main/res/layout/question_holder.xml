@@ -16,6 +16,13 @@
             name="listener"
             type="com.tilek.adapters.quizA.OnBtnClickListener" />
 
+        <variable
+            name="position"
+            type="int" />
+
+        <variable
+            name="holder"
+            type="com.tilek.adapters.quizA.QuizAdapter.QuizViewHolder" />
 
     </data>
 
@@ -47,10 +54,12 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="43dp"
+                android:text="@{question.type.equals(`multiple`) ? String.valueOf(question.incorrectAnswers.get(0)): ` `}"
+                android:onClick="@{() -> listener.onClick(position,0,holder.questionHolderBinding.btnOne)}"
                 android:clickable="@{question.clicked ? false : true}"
-                android:background="@drawable/question_btn_back"
+                android:background="@{question.selectQuestionPosition == 0 ? question.answerTrue ? @drawable/question_right_back : @drawable/question_wrong : @drawable/question_btn_back }"
                 android:textAlignment="center"
-                android:textColor="#6979F8" />
+                android:textColor="@{question.selectQuestionPosition == 0 ? @color/whiteText : @color/blueText }" />
 
             <Button
                 android:id="@+id/btn_two"
@@ -58,10 +67,12 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="6dp"
+                android:text="@{question.type.equals(`multiple`) ? String.valueOf(question.incorrectAnswers.get(1)): ` `}"
+                android:onClick="@{() -> listener.onClick(position,1,holder.questionHolderBinding.btnTwo)}"
                 android:clickable="@{question.clicked ? false : true}"
-                android:background="@drawable/question_btn_back"
+                android:background="@{question.selectQuestionPosition == 1 ? question.answerTrue ? @drawable/question_right_back : @drawable/question_wrong : @drawable/question_btn_back }"
                 android:textAlignment="center"
-                android:textColor="#6979F8" />
+                android:textColor="@{question.selectQuestionPosition == 1 ? @color/whiteText : @color/blueText }" />
 
             <Button
                 android:id="@+id/btn_three"
@@ -69,10 +80,12 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"
+                android:text="@{question.type.equals(`multiple`) ? String.valueOf(question.incorrectAnswers.get(2)): ` `}"
+                android:onClick="@{() -> listener.onClick(position,2,holder.questionHolderBinding.btnThree)}"
                 android:clickable="@{question.clicked ? false : true}"
-                android:background="@drawable/question_btn_back"
+                android:background="@{question.selectQuestionPosition == 2 ? question.answerTrue ? @drawable/question_right_back : @drawable/question_wrong : @drawable/question_btn_back }"
                 android:textAlignment="center"
-                android:textColor="#6979F8" />
+                android:textColor="@{question.selectQuestionPosition == 2 ? @color/whiteText : @color/blueText }"  />
 
             <Button
                 android:id="@+id/btn_four"
@@ -80,10 +93,12 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"
+                android:text="@{question.type.equals(`multiple`) ? String.valueOf(question.incorrectAnswers.get(3)): ` `}"
+                android:onClick="@{() -> listener.onClick(position,3,holder.questionHolderBinding.btnFour)}"
                 android:clickable="@{question.clicked ? false : true}"
-                android:background="@drawable/question_btn_back"
+                android:background="@{question.selectQuestionPosition == 3 ? question.answerTrue ? @drawable/question_right_back : @drawable/question_wrong : @drawable/question_btn_back }"
                 android:textAlignment="center"
-                android:textColor="#6979F8" />
+                android:textColor="@{question.selectQuestionPosition == 3 ? @color/whiteText : @color/blueText }"  />
 
         </LinearLayout>
 
@@ -101,11 +116,13 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="43dp"
+                android:onClick="@{() -> listener.onClick(position,0,holder.questionHolderBinding.btnYesBoolean)}"
+                android:text="@{question.type.equals(`boolean`) ? String.valueOf(question.incorrectAnswers.get(0)): ` `}"
                 android:clickable="@{question.clicked ? false : true}"
-                android:background="@drawable/question_btn_back"
+                android:background="@{question.selectQuestionPosition == 0 ? question.answerTrue ? @drawable/question_right_back : @drawable/question_wrong : @drawable/question_btn_back }"
                 android:textAlignment="center"
                 android:textAllCaps="false"
-                android:textColor="#6979F8" />
+                android:textColor="@{question.selectQuestionPosition == 0 ? @color/whiteText : @color/blueText }"  />
 
             <Button
                 android:id="@+id/btn_no_boolean"
@@ -113,11 +130,13 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="34dp"
+                android:text="@{question.type.equals(`boolean`) ? String.valueOf(question.incorrectAnswers.get(1)): ` `}"
+                android:onClick="@{() -> listener.onClick(position,1,holder.questionHolderBinding.btnNoBoolean)}"
                 android:clickable="@{question.clicked ? false : true}"
-                android:background="@drawable/question_btn_back"
+                android:background="@{question.selectQuestionPosition == 1 ? question.answerTrue ? @drawable/question_right_back : @drawable/question_wrong : @drawable/question_btn_back }"
                 android:textAlignment="center"
                 android:textAllCaps="false"
-                android:textColor="#6979F8" />
+                android:textColor="@{question.selectQuestionPosition == 1 ? @color/whiteText : @color/blueText }"  />
 
 
         </LinearLayout>

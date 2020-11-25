@@ -85,9 +85,9 @@ public class QuestionViewModel extends ViewModel {
 
         if (question.getIncorrectAnswers().get(answerPosition).equals(question.getCorrectAnswer())) {
             correctAnswers++;
-            question.setTrue(true);
+            question.setAnswerTrue(true);
         }else{
-            question.setTrue(false);
+            question.setAnswerTrue(false);
         }
 
         mQuestion.set(questionPosition,question);

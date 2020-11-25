@@ -1,10 +1,8 @@
 package com.tilek.data.local;
 
-import androidx.lifecycle.LiveData;
-
 import com.tilek.data.models.QuizResult;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public interface IHistoryStorage {
 
@@ -12,7 +10,7 @@ public interface IHistoryStorage {
 
     int saveQuizResult(QuizResult quizResult);
 
-    LiveData<ArrayList<QuizResult>> getAll();
+    List<QuizResult> getAll();
 
     void delete(int id);
 

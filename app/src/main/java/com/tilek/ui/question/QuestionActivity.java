@@ -84,6 +84,7 @@ public class QuestionActivity extends AppCompatActivity implements OnBtnClickLis
             intent.putExtra(CORRECT_ANSWERS,correctA);
             intent.putExtra(QUESTIONS,new Gson().toJson(questionViewModel.mQuestion));
             startActivity(intent);
+            finish();
         });
     }
 
@@ -116,12 +117,13 @@ public class QuestionActivity extends AppCompatActivity implements OnBtnClickLis
     }
 
     @Override
-    public void onClick(int position, int answerPosition) {
-
+    public void onClick(int position, int answerPosition,Button button) {
+        button.setBackgroundResource(R.drawable.question_click);
+        button.setTextColor(Color.WHITE);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                check(position,answerPosition);
+                check(position,button);
             }
         },1000);
 
@@ -134,24 +136,39 @@ public class QuestionActivity extends AppCompatActivity implements OnBtnClickLis
         questionViewModel.moveToQuestionFinish(position);
     }
 
-    public void check (int position, int answerPosition){
-        ArrayList<Button> views = new ArrayList<>();
-        views.add(quizAdapter.getHolder1().questionHolderBinding.btnOne);
-        views.add(quizAdapter.getHolder1().questionHolderBinding.btnTwo);
-        views.add(quizAdapter.getHolder1().questionHolderBinding.btnThree);
-        views.add(quizAdapter.getHolder1().questionHolderBinding.btnFour);
-        views.add(quizAdapter.getHolder1().questionHolderBinding.btnNoBoolean);
-        views.add(quizAdapter.getHolder1().questionHolderBinding.btnYesBoolean);
-        for (int i = 0; i < views.size() ; i++) {
-            if (views.get(i).getText().toString().equals(questionViewModel.mQuestion.get(position).getCorrectAnswer())){
-                views.get(i).setBackgroundResource(R.drawable.question_right_back);
-                views.get(i).setTextColor(Color.WHITE);
+    public void check (int position, Button button){
+        boolean trueS;
+            if (button.getText().toString().equals(questionViewModel.mQuestion.get(position).getCorrectAnswer())){
+                button.setBackgroundResource(R.drawable.question_right_back);
+                button.setTextColor(Color.WHITE);
+                trueS = true;
             }else{
-                views.get(i).setBackgroundResource(R.drawable.question_wrong);
-                views.get(i).setTextColor(Color.WHITE);
+                button.setBackgroundResource(R.drawable.question_wrong);
+                button.setTextColor(Color.WHITE);
+                trueS = false;
             }
-        }
-        quizAdapter.setBtns(views);
+            if (!trueS){
+                ArrayList<Button> btns = new ArrayList<>();
+                ArrayList<Button> btnsBoolean = new ArrayList<>();
+                btns.add(quizAdapter.getHolder1().questionHolderBinding.btnOne);
+                btns.add(quizAdapter.getHolder1().questionHolderBinding.btnTwo);
+                btns.add(quizAdapter.getHolder1().questionHolderBinding.btnThree);
+                btns.add(quizAdapter.getHolder1().questionHolderBinding.btnFour);
+                btnsBoolean.add(quizAdapter.getHolder1().questionHolderBinding.btnYesBoolean);
+                btnsBoolean.add(quizAdapter.getHolder1().questionHolderBinding.btnNoBoolean);
+                for (int i = 0; i < btns.size(); i++) {
+                    if (btns.get(i).getText().toString().equals(questionViewModel.mQuestion.get(position).getCorrectAnswer())){
+                        btns.get(i).setBackgroundResource(R.drawable.question_right_back);
+                        btns.get(i).setTextColor(Color.WHITE);
+                    }
+                }
+                for (int i = 0; i < btnsBoolean.size(); i++) {
+                    if (btnsBoolean.get(i).getText().toString().equals(questionViewModel.mQuestion.get(position).getCorrectAnswer())){
+                        btnsBoolean.get(i).setBackgroundResource(R.drawable.question_right_back);
+                        btnsBoolean.get(i).setTextColor(Color.WHITE);
+                    }
+                }
+            }
     }
 
     @Override

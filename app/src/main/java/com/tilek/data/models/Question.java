@@ -35,14 +35,14 @@ public class Question {
 
     private boolean isClicked;
 
-    private boolean isTrue;
+    private boolean isAnswerTrue;
 
-    public boolean isTrue() {
-        return isTrue;
+    public boolean isAnswerTrue() {
+        return isAnswerTrue;
     }
 
-    public void setTrue(boolean aTrue) {
-        isTrue = aTrue;
+    public void setAnswerTrue(boolean answerTrue) {
+        isAnswerTrue = answerTrue;
     }
 
     public boolean isClicked() {

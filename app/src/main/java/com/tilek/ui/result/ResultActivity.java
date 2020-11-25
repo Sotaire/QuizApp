@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.tilek.R;
 import com.tilek.data.models.Question;
@@ -46,20 +47,24 @@ public class ResultActivity extends AppCompatActivity {
                             ,questions.get(0).getDifficulty()
                             ,correctAnswers
                             ,new Date(System.currentTimeMillis())
-                            ,questions.size());
+                            ,questions.size()
+                            ,questions);
                     resultViewModel.getPercent(questions.size(),correctAnswers);
                     binding.setResult(quizResult);
                 }
             }
         });
 
+        binding.btnFinish.setOnClickListener(view -> {
+            resultViewModel.saveResultToDB(quizResult);
+            finish();
+        });
+
     }
 
-    void getDate(long time){
-        String dateString = new SimpleDateFormat("MM/dd/yyyy").format(time);
-    }
 
     @Override
     public void onBackPressed() {
+        finish();
     }
 }

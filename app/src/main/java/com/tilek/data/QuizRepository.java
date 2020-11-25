@@ -17,6 +17,7 @@ import com.tilek.data.network.QuizApiClient;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class QuizRepository implements IQuizApiClient, IHistoryStorage {
 
@@ -81,7 +82,7 @@ public class QuizRepository implements IQuizApiClient, IHistoryStorage {
     }
 
     @Override
-    public LiveData<ArrayList<QuizResult>> getAll() {
+    public List<QuizResult> getAll() {
         return null;
     }
 

@@ -10,4 +10,6 @@
     <color name="correctAnswer">#4CE2A7</color>
     <color name="wrongAnswer">#FF4D4D</color>
     <color name="clicked">#6979F8</color>
+    <color name="whiteText">#FFFFFF</color>
+    <color name="blueText">#6979F8</color>
 </resources>
