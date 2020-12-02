@@ -29,6 +29,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="?attr/backgroundColor"
         android:orientation="vertical">
 
         <TextView
@@ -38,7 +39,7 @@
             android:layout_gravity="center"
             android:text="@{question.question}"
             android:textAlignment="center"
-            android:textColor="@color/questionTextColor"
+            android:textColor="?attr/questionTextColor"
             android:textSize="20dp" />
 
         <LinearLayout
@@ -46,6 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:background="?attr/backgroundColor"
             android:visibility="@{question.type.equals(`multiple`) ? v.VISIBLE : v.GONE}">
 
             <Button
@@ -108,6 +110,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:orientation="vertical"
+            android:background="?attr/backgroundColor"
             android:visibility="@{question.type.equals(`multiple`) ? v.GONE : v.VISIBLE}">
 
             <Button

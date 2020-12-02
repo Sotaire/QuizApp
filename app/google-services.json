@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "952954325718",
+    "firebase_url": "https://quizapp-3f327.firebaseio.com",
+    "project_id": "quizapp-3f327",
+    "storage_bucket": "quizapp-3f327.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:952954325718:android:d354024e61e371a5b91777",
+        "android_client_info": {
+          "package_name": "com.tilek"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "952954325718-549pifs285d5oqho686qmg5gl5j0n794.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB44kWI0WuGyNNVSSziDw8161pZAssN8NM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "952954325718-549pifs285d5oqho686qmg5gl5j0n794.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

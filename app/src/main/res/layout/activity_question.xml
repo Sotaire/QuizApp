@@ -20,6 +20,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/backgroundColor"
     tools:context=".ui.question.QuestionActivity">
 
     <ImageView
@@ -39,6 +40,7 @@
         android:layout_marginTop="25dp"
         android:textAlignment="center"
         android:text="Mythology"
+        android:textColor="?attr/questionTextColor"
         android:textSize="17sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -64,6 +66,7 @@
         android:layout_height="14dp"
         android:layout_marginTop="4dp"
         android:textSize="10sp"
+        android:textColor="?attr/questionTextColor"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/progress_bar" />
@@ -85,7 +88,7 @@
         android:layout_height="40dp"
         android:layout_marginBottom="77dp"
         android:text="Skip"
-        android:textColor="#FFFFFF"
+        android:textColor="?attr/whiteText"
         android:textAllCaps="false"
         android:background="@drawable/skip_back"
         app:layout_constraintBottom_toBottomOf="parent"

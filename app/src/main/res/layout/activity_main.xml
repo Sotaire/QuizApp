@@ -20,9 +20,10 @@
         app:layout_constraintBottom_toTopOf="@id/main_bottom_nav"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:background="@android:color/white"
+        android:background="?attr/backgroundColor"
         android:id="@+id/main_bottom_nav"
         android:layout_width="match_parent"
+        app:itemTextColor="?attr/questionTextColor"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/main_menu_nav"/>

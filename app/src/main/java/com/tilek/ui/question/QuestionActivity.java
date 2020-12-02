@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.SnapHelper;
 
 import com.google.gson.Gson;
 import com.tilek.R;
+import com.tilek.data.local.prefs.Prefs;
 import com.tilek.data.models.Question;
 import com.tilek.data.models.QuizResult;
 import com.tilek.databinding.ActivityQuestionBinding;
@@ -38,6 +39,7 @@ public class QuestionActivity extends AppCompatActivity implements OnBtnClickLis
     QuestionViewModel questionViewModel;
     int position;
     int clickedPosition;
+    Prefs prefs;
 
     public static final String CORRECT_ANSWERS = "correct_answers";
     public static final String QUESTIONS = "questions";
@@ -45,6 +47,12 @@ public class QuestionActivity extends AppCompatActivity implements OnBtnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        prefs = new Prefs(getApplicationContext());
+        if (prefs.getTheme() == 0) {
+            setTheme(R.style.LightTheme);
+        }else {
+            setTheme(R.style.DarkTheme);
+        }
         binding = DataBindingUtil.setContentView(this, R.layout.activity_question);
 
         questionViewModel = new ViewModelProvider(this).get(QuestionViewModel.class);

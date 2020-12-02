@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.tilek.R;
+import com.tilek.data.local.prefs.Prefs;
 import com.tilek.data.models.Question;
 import com.tilek.data.models.QuizResult;
 import com.tilek.databinding.ActivityResultBinding;
@@ -25,11 +26,17 @@ public class ResultActivity extends AppCompatActivity {
     ActivityResultBinding binding;
     QuizResult quizResult;
     int correctAnswers;
+    Prefs prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        prefs = new Prefs(getApplicationContext());
+        if (prefs.getTheme() == 0) {
+            setTheme(R.style.LightTheme);
+        }else {
+            setTheme(R.style.DarkTheme);
+        }
         binding = DataBindingUtil.setContentView(this,R.layout.activity_result);
 
         resultViewModel = new ViewModelProvider(this).get(ResultViewModel.class);

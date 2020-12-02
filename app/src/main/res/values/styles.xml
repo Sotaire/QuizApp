@@ -16,5 +16,41 @@
         <item name="android:layout_marginStart">24dp</item>
     </style>
 
+    <style name="LightTheme" parent="AppTheme" >
+
+        <item name="backgroundColor">#FFFFFF</item>
+        <item name="colorPrimary">#6200EE</item>
+        <item name="colorPrimaryDark">#3700B3</item>
+        <item name="colorAccent">#3700B3</item>
+        <item name="textColor">#A9A9A9</item>
+        <item name="textColor2">#3F3356</item>
+        <item name="questionTextColor">#1A051D</item>
+        <item name="correctA">#801F2041</item>
+        <item name="correctAnswer">#4CE2A7</item>
+        <item name="wrongAnswer">#FF4D4D</item>
+        <item name="clicked">#6979F8</item>
+        <item name="whiteText">#FFFFFF</item>
+        <item name="blueText">#6979F8</item>
+
+    </style>
+
+    <style name="DarkTheme" parent="AppTheme" >
+
+        <item name="backgroundColor">#000000</item>
+        <item name="colorPrimary">#6200EE</item>
+        <item name="colorPrimaryDark">#3700B3</item>
+        <item name="colorAccent">#3700B3</item>
+        <item name="textColor">#C1C1C1</item>
+        <item name="textColor2">#605478</item>
+        <item name="questionTextColor">#726075</item>
+        <item name="correctA">#8044478F</item>
+        <item name="correctAnswer">#2D8E68</item>
+        <item name="wrongAnswer">#F81F1F</item>
+        <item name="clicked">#98A2EF</item>
+        <item name="whiteText">#2C2C2C</item>
+        <item name="blueText">#5164FA</item>
+
+    </style>
+
 
 </resources>

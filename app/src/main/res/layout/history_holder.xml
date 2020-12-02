@@ -17,7 +17,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
         android:text="@{`Category: ` + quizResult.category }"
-        android:textColor="@android:color/black"
+        android:textColor="?attr/textColor"
         android:textSize="17sp"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -39,7 +39,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="13dp"
         android:text="@{ `Correct answers: ` + String.valueOf(quizResult.correctAnswers) + `/10 `}"
-        android:textColor="@color/correctA"
+        android:textColor="?attr/correctA"
         android:textSize="12sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/h_category_tv" />
@@ -51,7 +51,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="9dp"
         android:text="@{`Difficulty: ` + quizResult.difficulty }"
-        android:textColor="@color/correctA"
+        android:textColor="?attr/correctA"
         android:textSize="12sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/h_correct_answers_tv" />
@@ -63,7 +63,7 @@
         android:layout_marginTop="70dp"
         android:layout_marginRight="18dp"
         android:text="12 may 2019 20:32"
-        android:textColor="@color/correctA"
+        android:textColor="?attr/correctA"
         android:textSize="9sp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

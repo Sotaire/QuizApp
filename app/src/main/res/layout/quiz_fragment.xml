@@ -17,6 +17,7 @@
     tools:context=".ui.main.quizF.QuizFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/backgroundColor"
     >
 
     <TextView
@@ -26,7 +27,7 @@
         android:layout_marginTop="32dp"
         android:text="Quiz"
         android:textAlignment="center"
-        android:textColor="#000000"
+        android:textColor="?attr/questionTextColor"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -49,7 +50,7 @@
         android:layout_marginLeft="67dp"
         android:layout_marginTop="39dp"
         android:text="Question amount:    "
-        android:textColor="@color/textColor"
+        android:textColor="?attr/textColor"
         android:textSize="12sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/quiz_iv" />
@@ -60,7 +61,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="38dp"
         android:text="4"
-        android:textColor="@color/textColor2"
+        android:textColor="?attr/textColor2"
         android:textSize="15sp"
         app:layout_constraintLeft_toRightOf="@id/quiz_amount_tv"
         app:layout_constraintTop_toBottomOf="@id/quiz_iv" />
@@ -86,7 +87,7 @@
         android:layout_marginLeft="67dp"
         android:layout_marginTop="23dp"
         android:text="Category"
-        android:textColor="@color/textColor"
+        android:textColor="?attr/textColor"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/seekbar" />
 
@@ -96,6 +97,7 @@
         android:layout_height="48dp"
         android:layout_marginLeft="67dp"
         android:layout_marginTop="5dp"
+        android:background="?attr/correctA"
         android:entries="@array/spinner1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/category_tv" />
@@ -107,6 +109,7 @@
         android:layout_marginLeft="67dp"
         android:layout_marginTop="9dp"
         android:text="Difficulty"
+        android:textColor="?attr/textColor"
         android:textSize="12sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/spinner1" />
@@ -117,6 +120,7 @@
         android:layout_height="48dp"
         android:layout_marginLeft="67dp"
         android:layout_marginTop="5dp"
+        android:background="?attr/correctA"
         android:entries="@array/spinner2"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/difficulty_tv" />
@@ -128,7 +132,7 @@
         android:layout_marginTop="64dp"
         android:background="@drawable/btn_start_back"
         android:text="START"
-        android:textColor="@android:color/white"
+        android:textColor="?attr/whiteText"
         android:textSize="15sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
