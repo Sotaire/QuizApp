@@ -32,7 +32,7 @@ public class MyFCMService extends FirebaseMessagingService {
 
     String title;
     String message;
-    String imageUrl;
+    Bitmap image;
     int notificationId;
 
     private Map<String, String> data;
@@ -47,14 +47,9 @@ public class MyFCMService extends FirebaseMessagingService {
     private void onPostExecute(RemoteMessage remoteMessage) {
         data = remoteMessage.getData();
 
-//        title = data.get("title");
+        if (remoteMessage.getNotification().getTitle()!= null){
         title = remoteMessage.getNotification().getTitle();
-
-//        if (remoteMessage.getData().containsKey("content")
-//            && remoteMessage.getData().get("content") != null){
-//            message = data.get("content");
-//        }
-
+        }
 
         if (remoteMessage.getData().containsKey("id")
                 && remoteMessage.getData().get("id") != null) {
@@ -62,10 +57,13 @@ public class MyFCMService extends FirebaseMessagingService {
         }
 
         if (remoteMessage.getNotification().getImageUrl() != null) {
-            imageUrl = remoteMessage.getNotification().getImageUrl().toString();
+            image = getBitmapfromUrl(remoteMessage.getNotification().getImageUrl().toString());
         }
 
-        message = remoteMessage.getNotification().getBody();
+
+        if (remoteMessage.getNotification().getBody() != null){
+            message = remoteMessage.getNotification().getBody();
+        }
 
         Intent intent = new Intent(this, MainActivity.class);
         String channelId = "Default";
@@ -81,6 +79,10 @@ public class MyFCMService extends FirebaseMessagingService {
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, channelId)
                 .setSmallIcon(R.drawable.ic_brain_v2)
+                .setStyle( new NotificationCompat.BigPictureStyle()
+                        .bigPicture(image)
+                        .bigLargeIcon(null))
+                .setLargeIcon(image)
                 .setContentTitle(title)
                 .setContentText(message)
                 .setAutoCancel(true)
@@ -100,6 +102,21 @@ public class MyFCMService extends FirebaseMessagingService {
         }
 
         manager.notify(notificationId, notification);
+    }
+
+    public Bitmap getBitmapfromUrl(String imageUrl) {
+        try {
+            URL url = new URL(imageUrl);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setDoInput(true);
+            connection.connect();
+            InputStream input = connection.getInputStream();
+            return BitmapFactory.decodeStream(input);
+
+        } catch (Exception e) {
+            Log.e("awesome", "Error in getting notification image: " + e.getLocalizedMessage());
+            return null;
+        }
     }
 
 }
